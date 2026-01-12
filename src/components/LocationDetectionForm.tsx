@@ -40,9 +40,10 @@ export const LocationDetectionForm = ({ onSubmit, isLoading }: LocationDetection
     new Promise((resolve, reject) => {
       if (!navigator.geolocation) return reject(new Error("Geolocation unsupported"));
       navigator.geolocation.getCurrentPosition(resolve, reject, {
-        enableHighAccuracy: true,
-        timeout: 12000,
-        maximumAge: 0,
+        // Prefer a fast, possibly cached fix; fall back to lower accuracy when offline
+        enableHighAccuracy: false,
+        timeout: 8000,
+        maximumAge: 300000,
       });
     });
 
@@ -55,12 +56,47 @@ export const LocationDetectionForm = ({ onSubmit, isLoading }: LocationDetection
       const lat = pos.coords.latitude;
       const lon = pos.coords.longitude;
 
+      // Offline path: synthesize payload with cached/default values
+      if (!navigator.onLine) {
+        const cachedSoil = (() => { try { return JSON.parse(localStorage.getItem('lastSoil') || 'null'); } catch { return null; } })();
+        const cachedClimate = (() => { try { return JSON.parse(localStorage.getItem('lastClimate') || 'null'); } catch { return null; } })();
+        const place = `${lat.toFixed(4)}, ${lon.toFixed(4)}`;
+
+        const soil = cachedSoil ?? {
+          pH: 6.6,
+          nitrogen: 120,
+          phosphorus: 80,
+          potassium: 200,
+          organicCarbon: 1.5,
+          soilTexture: "Loamy",
+        };
+        const climate = cachedClimate ?? {
+          temperature: 26,
+          rainfall: 900,
+          humidity: 70,
+        };
+
+        const data: LocationData = {
+          latitude: lat,
+          longitude: lon,
+          location: place,
+          soilData: soil,
+          climateData: climate,
+        };
+        setLocationData(data);
+        setStep("display");
+        return;
+      }
+
       setStep("fetching");
       const [place, soil, climate] = await Promise.all([
         fetchLocationName(lat, lon),
-        fetchSoilData(lat, lon),       // <— SoilGrids REST API used here
-        fetchClimateData(lat, lon),    // <— OpenWeather/Open‑Meteo
+        fetchSoilData(lat, lon),
+        fetchClimateData(lat, lon),
       ]);
+
+      try { localStorage.setItem('lastSoil', JSON.stringify(soil)); } catch {}
+      try { localStorage.setItem('lastClimate', JSON.stringify(climate)); } catch {}
 
       const data: LocationData = {
         latitude: lat,
@@ -74,6 +110,34 @@ export const LocationDetectionForm = ({ onSubmit, isLoading }: LocationDetection
       setStep("display");
     } catch (e: any) {
       console.error(e);
+      // If geolocation times out or is denied, proceed with synthesized defaults so the user isn't blocked
+      if (e?.code === 3 /* TIMEOUT */ || e?.code === 1 /* PERMISSION_DENIED */) {
+        const cachedSoil = (() => { try { return JSON.parse(localStorage.getItem('lastSoil') || 'null'); } catch { return null; } })();
+        const cachedClimate = (() => { try { return JSON.parse(localStorage.getItem('lastClimate') || 'null'); } catch { return null; } })();
+        const soil = cachedSoil ?? {
+          pH: 6.6,
+          nitrogen: 120,
+          phosphorus: 80,
+          potassium: 200,
+          organicCarbon: 1.5,
+          soilTexture: "Loamy",
+        };
+        const climate = cachedClimate ?? {
+          temperature: 26,
+          rainfall: 900,
+          humidity: 70,
+        };
+        const data: LocationData = {
+          latitude: 0,
+          longitude: 0,
+          location: "Location unavailable (using offline defaults)",
+          soilData: soil,
+          climateData: climate,
+        };
+        setLocationData(data);
+        setStep("display");
+        return;
+      }
       setError(e?.message || "Failed to detect location.");
       setStep("initial");
     }

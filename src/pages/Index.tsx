@@ -4,7 +4,7 @@ import { CropRecommendations } from "@/components/CropRecommendations";
 import { LocationDetectionForm } from "@/components/LocationDetectionForm";
 import { OptionSelector } from "@/components/OptionSelector";
 import { generateCropRecommendations } from "@/utils/cropRecommendation";
-import { predictCrop } from "@/utils/mlApi";
+import { predictCrop, isMlAvailable } from "@/utils/mlApi";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Leaf, Brain, BarChart3, FileBarChart } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -13,6 +13,7 @@ import { CropComparisonChart } from "@/components/CropComparisonChart";
 import { ExportButton } from "@/components/ExportButton";
 import { OnboardingTour } from "@/components/OnboardingTour";
 import { LanguageSelector } from "@/components/LanguageSelector";
+import { WeatherAnalysisButton } from "@/components/WeatherAnalysisButton";
 import { useLanguage } from "@/hooks/useLanguage";
 import heroImage from "@/assets/hero-farm.jpg";
 
@@ -41,7 +42,7 @@ const Index = () => {
     setFormData(formData);
 
     const useMl = ((import.meta as any).env?.VITE_USE_TF_ML || 'false') === 'true';
-    if (useMl) {
+    if (useMl && await isMlAvailable()) {
       try {
         const features = {
           soil_ph: parseFloat(formData.pH),
@@ -113,7 +114,7 @@ const Index = () => {
     setFormData(convertedFormData);
     
     const useMl = ((import.meta as any).env?.VITE_USE_TF_ML || 'false') === 'true';
-    if (useMl) {
+    if (useMl && await isMlAvailable()) {
       try {
         const features = {
           soil_ph: parseFloat(convertedFormData.pH),
@@ -175,6 +176,7 @@ const Index = () => {
       <div className="min-h-screen bg-gradient-to-br from-background via-accent/10 to-primary/5">
         {/* Navigation */}
         <div className="absolute top-4 right-4 z-20 flex items-center gap-2">
+          <WeatherAnalysisButton />
           <LanguageSelector />
           <div data-tour="dashboard">
             <Link to="/dashboard">
@@ -201,15 +203,30 @@ const Index = () => {
                 <p className="text-xl md:text-2xl mb-8 text-white/90">
                   {t('hero_subtitle')}
                 </p>
-                <Button 
-                  size="lg" 
-                  onClick={goToOptions}
-                  className="bg-gradient-earth hover:shadow-glow transition-all duration-300 text-lg px-8 py-3"
-                  data-tour="start-analysis"
-                >
-                  {t('start_analysis')}
-                  <Brain className="ml-2 h-5 w-5" />
-                </Button>
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+                  <Button 
+                    size="lg" 
+                    onClick={goToOptions}
+                    className="bg-gradient-earth hover:shadow-glow transition-all duration-300 text-lg px-8 py-3"
+                    data-tour="start-analysis"
+                  >
+                    {t('start_analysis')}
+                    <Brain className="ml-2 h-5 w-5" />
+                  </Button>
+                  <a
+                    href="https://youtu.be/bpJeYQeitNE?si=ma4o9wyxTgszHr5-"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Button
+                      size="lg"
+                      variant="secondary"
+                      className="transition-all duration-300 text-lg px-8 py-3"
+                    >
+                      🎥 Watch Demo
+                    </Button>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
@@ -398,3 +415,6 @@ const Index = () => {
 };
 
 export default Index;
+
+
+

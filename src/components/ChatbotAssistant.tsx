@@ -139,16 +139,80 @@ export const ChatbotAssistant = () => {
   const generateReply = (q: string): string => {
     const l = language;
     const lower = q.toLowerCase().trim();
+    
+    // Existing suggestions
     const s1 = t('chat_suggestion_1')?.toLowerCase();
     const s2 = t('chat_suggestion_2')?.toLowerCase();
     const s3 = t('chat_suggestion_3')?.toLowerCase();
     if (s1 && lower === s1) return t('crops_monsoon');
     if (s2 && lower === s2) return t('ideal_ph_tomatoes');
     if (s3 && lower === s3) return t('improve_fertility');
+    
+    // Greetings and farewells
     if (/\b(hello|hi)\b|namaste|namaskar|ನಮಸ್ಕಾರ|ಹಲೋ|नमस्ते/i.test(lower)) return t('welcome');
     if (/\b(bye|goodbye)\b|alvida|ವಿದಾಯ|अलविदा/i.test(lower)) return t('bye');
-    if (/\b(ph|pH)\b|tomato|tomatoes|टमाटर|ಟಮಾಟೋ/i.test(lower)) return t('ideal_ph_tomatoes');
-    if (/fertil|fertility|improv|उर्वर|उपजाऊ|ಫರ್ಟಿಲಿಟಿ/i.test(lower)) return t('improve_fertility');
+    
+    // Enhanced FAQ matching with keywords
+    const faqPatterns = [
+      // Crop selection - more specific patterns
+      { pattern: /what.*crop.*plant|which.*crop.*plant|crop.*should.*plant|कौन.*फसल.*लगानी|ಯಾವ.*ಬೆಳೆ.*ನೆಡಬೇಕು/i, answer: 'a1_crop_selection' },
+      
+      // Pest control - more specific patterns
+      { pattern: /how.*control.*pest|natural.*pest.*control|pest.*control.*natural|कीट.*नियंत्रण|ಕೀಟ.*ನಿಯಂತ್ರಣ/i, answer: 'a2_pest_control' },
+      
+      // Irrigation - more specific patterns
+      { pattern: /best.*irrigation|irrigation.*method|watering.*method|सिंचाई.*विधि|ನೀರಾವರಿ.*ವಿಧಾನ/i, answer: 'a3_irrigation_methods' },
+      
+      // Harvesting - more specific patterns
+      { pattern: /when.*harvest|best.*time.*harvest|harvest.*time|कटाई.*समय|ಕೊಯ್ಯುವ.*ಸಮಯ/i, answer: 'a4_harvesting_time' },
+      
+      // Soil preparation - more specific patterns
+      { pattern: /how.*prepare.*soil|soil.*preparation|prepare.*soil.*plant|मिट्टी.*तैयार|ಮಣ್ಣು.*ಸಿದ್ಧ/i, answer: 'a5_soil_preparation' },
+      
+      // Fertilizer - more specific patterns
+      { pattern: /how.*much.*fertilizer|fertilizer.*usage|fertilizer.*amount|खाद.*कितनी|ಗೊಬ್ಬರ.*ಎಷ್ಟು/i, answer: 'a6_fertilizer_usage' },
+      
+      // Crop rotation - more specific patterns
+      { pattern: /crop.*rotation|what.*crop.*rotation|फसल.*चक्र|ಬೆಳೆ.*ಪರಿವರ್ತನೆ/i, answer: 'a7_crop_rotation' },
+      
+      // Weed control - more specific patterns
+      { pattern: /how.*control.*weed|weed.*control|control.*weed|खरपतवार.*नियंत्रण|ಕಳೆ.*ನಿಯಂತ್ರಣ/i, answer: 'a8_weed_control' },
+      
+      // Water management - more specific patterns
+      { pattern: /water.*management|efficient.*water|manage.*water|पानी.*प्रबंधन|ನೀರು.*ನಿರ್ವಹಣೆ/i, answer: 'a9_water_management' },
+      
+      // Seed selection - more specific patterns
+      { pattern: /how.*choose.*seed|choose.*right.*seed|seed.*selection|बीज.*चुनें|ಬೀಜ.*ಆಯ್ಕೆ/i, answer: 'a10_seed_selection' },
+      
+      // Organic farming - more specific patterns
+      { pattern: /how.*start.*organic|organic.*farming|start.*organic.*farm|जैविक.*खेती|ಜೈವಿಕ.*ಕೃಷಿ/i, answer: 'a11_organic_farming' },
+      
+      // Storage - more specific patterns
+      { pattern: /how.*store.*crop|store.*harvested|crop.*storage|भंडारण.*कैसे|ಸಂಗ್ರಹಣೆ.*ಹೇಗೆ/i, answer: 'a12_storage_methods' },
+      
+      // Market timing - more specific patterns
+      { pattern: /when.*sell.*crop|best.*time.*sell|sell.*crop.*time|बेचने.*समय|ಮಾರಾಟ.*ಸಮಯ/i, answer: 'a13_market_timing' },
+      
+      // Disease prevention - more specific patterns
+      { pattern: /how.*prevent.*disease|prevent.*crop.*disease|disease.*prevention|बीमारी.*रोकें|ರೋಗ.*ತಡೆಯ/i, answer: 'a14_disease_prevention' },
+      
+      // Profit maximization - more specific patterns
+      { pattern: /how.*maximize.*profit|maximize.*farming.*profit|increase.*profit|मुनाफा.*बढ़ाएं|ಲಾಭ.*ಹೆಚ್ಚಿಸಿ/i, answer: 'a15_profit_maximization' },
+      
+      // Legacy patterns (keep existing functionality)
+      { pattern: /\b(ph|pH)\b.*tomato|tomato.*ph|टमाटर.*pH|ಟಮಾಟೋ.*pH/i, answer: 'ideal_ph_tomatoes' },
+      { pattern: /improve.*fertility|soil.*fertility|उर्वरता.*बढ़ाएं|ಫಲವತ್ತತೆ.*ಹೆಚ್ಚಿಸಿ/i, answer: 'improve_fertility' }
+    ];
+    
+    // Check for FAQ matches
+    for (const faq of faqPatterns) {
+      if (faq.pattern.test(lower)) {
+        console.log(`FAQ match found: ${faq.answer} for query: "${lower}"`);
+        return t(faq.answer);
+      }
+    }
+    
+    // Weather-related queries
     if (/weather|rain|temperature|climate|बारिश|मौसम|ತಾಪಮಾನ|ಹವಾಮಾನ/i.test(lower)) {
       return {
         en: 'Ask me about soil pH, rainfall ranges, or best crops for your season. I can guide you with quick tips.',
@@ -156,6 +220,7 @@ export const ChatbotAssistant = () => {
         kn: 'ಮಣ್ಣಿನ pH, ಮಳೆಯ ಪ್ರಮಾಣ ಅಥವಾ ನಿಮ್ಮ ಋತುವಿಗೆ ಉತ್ತಮ ಬೆಳೆಗಳ ಬಗ್ಗೆ ಕೇಳಿ. ನಾನು ವೇಗದ ಸಲಹೆಗಳನ್ನು ನೀಡುತ್ತೇನೆ.'
       }[l];
     }
+    
     return t('default_answer');
   };
 
@@ -166,8 +231,25 @@ export const ChatbotAssistant = () => {
     setMessages((m) => [...m, user]);
     setInput('');
 
+    setLoading(true);
+    
+    // First, check if we have a local FAQ answer
+    const localReply = generateReply(text);
+    const isLocalAnswer = localReply !== t('default_answer');
+    
+    console.log(`Query: "${text}", Local reply: "${localReply}", Is local: ${isLocalAnswer}`);
+    
+    if (isLocalAnswer) {
+      // Use local FAQ answer immediately
+      const bot: ChatMsg = { role: 'bot', text: localReply, ts: Date.now() + 1 };
+      setMessages((m) => [...m, bot]);
+      speak(bot.text);
+      setLoading(false);
+      return;
+    }
+
+    // If no local answer, try Gemini API
     try {
-      setLoading(true);
       const reply = await askGemini(text, language);
       const bot: ChatMsg = { role: 'bot', text: reply || t('default_answer'), ts: Date.now() + 1 };
       setMessages((m) => [...m, bot]);
@@ -198,8 +280,15 @@ export const ChatbotAssistant = () => {
     ]);
   };
 
-  // Suggestions based on language
-  const suggestions = [t('chat_suggestion_1'), t('chat_suggestion_2'), t('chat_suggestion_3')];
+  // Enhanced suggestions based on language
+  const suggestions = [
+    t('chat_suggestion_1'), 
+    t('chat_suggestion_2'), 
+    t('chat_suggestion_3'),
+    t('q1_crop_selection'),
+    t('q2_pest_control'),
+    t('q3_irrigation_methods')
+  ];
 
   return (
     <div className="fixed bottom-4 right-4 z-50">

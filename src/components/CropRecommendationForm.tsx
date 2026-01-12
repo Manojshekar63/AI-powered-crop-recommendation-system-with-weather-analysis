@@ -41,6 +41,13 @@ export const CropRecommendationForm = ({ onSubmit, isLoading }: CropRecommendati
   const [fetching, setFetching] = useState(false);
   const [error, setError] = useState<string>("");
 
+  function loadCache<T>(key: string): T | null {
+    try { return JSON.parse(localStorage.getItem(key) || 'null'); } catch { return null; }
+  }
+  function saveCache<T>(key: string, value: T) {
+    try { localStorage.setItem(key, JSON.stringify(value)); } catch {}
+  }
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     void handleFetchAndSubmit();
@@ -55,14 +62,90 @@ export const CropRecommendationForm = ({ onSubmit, isLoading }: CropRecommendati
     setFetching(true);
     setError("");
 
+    // Offline path: use cached or sensible defaults
+    if (!navigator.onLine) {
+      const cachedGeo = loadCache<{ lat: number; lon: number; displayName: string }>('lastGeo');
+      const cachedSoil = loadCache<any>('lastSoil');
+      const cachedClimate = loadCache<any>('lastClimate');
+
+      const displayName = formData.location.trim();
+      const soil = cachedSoil ?? {
+        pH: 6.5,
+        nitrogen: 120,
+        phosphorus: 80,
+        potassium: 200,
+        organicCarbon: 1.5,
+        soilTexture: "Loamy",
+      };
+      const climate = cachedClimate ?? {
+        temperature: 26,
+        humidity: 70,
+        rainfall: 900,
+      };
+
+      const finalForm: FormData = {
+        location: cachedGeo?.displayName ?? displayName,
+        soilType: soil.soilTexture,
+        pH: String(soil.pH),
+        nitrogen: String(soil.nitrogen),
+        phosphorus: String(soil.phosphorus),
+        potassium: String(soil.potassium),
+        organicCarbon: String(soil.organicCarbon),
+        rainfall: String(climate.rainfall),
+        temperature: String(climate.temperature),
+        humidity: String(climate.humidity),
+      };
+      setFormData(finalForm);
+      onSubmit(finalForm);
+      setFetching(false);
+      return;
+    }
+
     try {
       // 1) Geocode address -> lat/lon
       const geo = await geocodeAddress(formData.location.trim());
-      if (!geo) throw new Error("GEOCODE_FAIL");
 
-      // 2) Fetch soil and climate
-      const soil = await fetchSoilData(geo.lat, geo.lon);
-      const climate = await fetchClimateData(geo.lat, geo.lon);
+      if (!geo) {
+        // Fallback path if geocoding fails
+        const cachedSoil = loadCache<any>('lastSoil');
+        const cachedClimate = loadCache<any>('lastClimate');
+        const soil = cachedSoil ?? { pH: 6.5, nitrogen: 120, phosphorus: 80, potassium: 200, organicCarbon: 1.5, soilTexture: "Loamy" };
+        const climate = cachedClimate ?? { temperature: 26, humidity: 70, rainfall: 900 };
+        const finalForm: FormData = {
+          location: formData.location.trim(),
+          soilType: soil.soilTexture,
+          pH: String(soil.pH),
+          nitrogen: String(soil.nitrogen),
+          phosphorus: String(soil.phosphorus),
+          potassium: String(soil.potassium),
+          organicCarbon: String(soil.organicCarbon),
+          rainfall: String(climate.rainfall),
+          temperature: String(climate.temperature),
+          humidity: String(climate.humidity),
+        };
+        setFormData(finalForm);
+        onSubmit(finalForm);
+        return;
+      }
+
+      saveCache('lastGeo', geo);
+
+      // 2) Fetch soil and climate; if either fails, use defaults but still proceed
+      let soil: any;
+      try {
+        soil = await fetchSoilData(geo.lat, geo.lon);
+        saveCache('lastSoil', soil);
+      } catch {
+        soil = loadCache<any>('lastSoil') ?? { pH: 6.5, nitrogen: 120, phosphorus: 80, potassium: 200, organicCarbon: 1.5, soilTexture: "Loamy" };
+      }
+
+      let climate: any;
+      try {
+        climate = await fetchClimateData(geo.lat, geo.lon);
+        saveCache('lastClimate', climate);
+      } catch {
+        climate = loadCache<any>('lastClimate') ?? { temperature: 26, humidity: 70, rainfall: 900 };
+      }
 
       // 3) Build final payload (pre-filled, hidden/read-only to user)
       const finalForm: FormData = {
@@ -72,7 +155,7 @@ export const CropRecommendationForm = ({ onSubmit, isLoading }: CropRecommendati
         nitrogen: String(soil.nitrogen),
         phosphorus: String(soil.phosphorus),
         potassium: String(soil.potassium),
-  organicCarbon: String(soil.organicCarbon),
+        organicCarbon: String(soil.organicCarbon),
         rainfall: String(climate.rainfall),
         temperature: String(climate.temperature),
         humidity: String(climate.humidity),
@@ -81,7 +164,25 @@ export const CropRecommendationForm = ({ onSubmit, isLoading }: CropRecommendati
       onSubmit(finalForm);
     } catch (err) {
       console.error(err);
-      setError(t('error_fetching_data'));
+      // As a last resort, proceed with typed location and defaults rather than blocking
+      const cachedSoil = loadCache<any>('lastSoil');
+      const cachedClimate = loadCache<any>('lastClimate');
+      const soil = cachedSoil ?? { pH: 6.5, nitrogen: 120, phosphorus: 80, potassium: 200, organicCarbon: 1.5, soilTexture: "Loamy" };
+      const climate = cachedClimate ?? { temperature: 26, humidity: 70, rainfall: 900 };
+      const finalForm: FormData = {
+        location: formData.location.trim(),
+        soilType: soil.soilTexture,
+        pH: String(soil.pH),
+        nitrogen: String(soil.nitrogen),
+        phosphorus: String(soil.phosphorus),
+        potassium: String(soil.potassium),
+        organicCarbon: String(soil.organicCarbon),
+        rainfall: String(climate.rainfall),
+        temperature: String(climate.temperature),
+        humidity: String(climate.humidity),
+      };
+      setFormData(finalForm);
+      onSubmit(finalForm);
     } finally {
       setFetching(false);
     }
@@ -89,6 +190,11 @@ export const CropRecommendationForm = ({ onSubmit, isLoading }: CropRecommendati
 
   // Geocode using OpenStreetMap Nominatim (no key required)
   const geocodeAddress = async (q: string): Promise<{ lat: number; lon: number; displayName: string } | null> => {
+    if (!navigator.onLine) {
+      const cached = loadCache<{ lat: number; lon: number; displayName: string }>('lastGeo');
+      if (cached) return cached;
+      return { lat: 0, lon: 0, displayName: q };
+    }
     const url = `https://nominatim.openstreetmap.org/search?format=jsonv2&q=${encodeURIComponent(q)}&limit=1`;
     const res = await fetch(url, { headers: { Accept: 'application/json' } });
     const j = await res.json();

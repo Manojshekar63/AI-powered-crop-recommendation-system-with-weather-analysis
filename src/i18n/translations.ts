@@ -665,5 +665,171 @@ export const chatbotTranslations = {
     en: 'Microphone permission denied. Please allow mic access.',
     hi: 'माइक्रोफ़ोन की अनुमति अस्वीकृत। कृपया माइक की अनुमति दें।',
     kn: 'ಮೈಕ್ರೋಫೋನ್ ಅನುಮತಿ ನಿರಾಕರಿಸಲಾಗಿದೆ. ದಯವಿಟ್ಟು ಮೈಕ್ ಪ್ರವೇಶಕ್ಕೆ ಅನುಮತಿ ನೀಡಿ.'
+  },
+
+  // Enhanced FAQ Questions and Answers
+  q1_crop_selection: {
+    en: 'What crops should I plant in my region?',
+    hi: 'मेरे क्षेत्र में कौन सी फसलें लगानी चाहिए?',
+    kn: 'ನನ್ನ ಪ್ರದೇಶದಲ್ಲಿ ಯಾವ ಬೆಳೆಗಳನ್ನು ನೆಡಬೇಕು?'
+  },
+  a1_crop_selection: {
+    en: 'Choose crops based on your soil type, climate, and market demand. For clay soil: rice, wheat, sugarcane. For sandy soil: groundnut, millets, cotton. For loamy soil: most vegetables, pulses, and cereals work well.',
+    hi: 'अपनी मिट्टी, जलवायु और बाजार की मांग के आधार पर फसलें चुनें। चिकनी मिट्टी के लिए: चावल, गेहूं, गन्ना। रेतीली मिट्टी के लिए: मूंगफली, बाजरा, कपास। दोमट मिट्टी के लिए: अधिकांश सब्जियां, दालें और अनाज अच्छे से उगते हैं।',
+    kn: 'ನಿಮ್ಮ ಮಣ್ಣಿನ ಪ್ರಕಾರ, ಹವಾಮಾನ ಮತ್ತು ಮಾರುಕಟ್ಟೆ ಬೇಡಿಕೆಯ ಆಧಾರದ ಮೇಲೆ ಬೆಳೆಗಳನ್ನು ಆಯ್ಕೆ ಮಾಡಿ. ಕೆಸರು ಮಣ್ಣಿಗೆ: ಅಕ್ಕಿ, ಗೋಧಿ, ಕಬ್ಬು. ಮರಳು ಮಣ್ಣಿಗೆ: ಕಡಲೆ, ಸಜ್ಜೆ, ಹತ್ತಿ. ಮಿಶ್ರ ಮಣ್ಣಿಗೆ: ಹೆಚ್ಚಿನ ತರಕಾರಿಗಳು, ಪಲ್ಸೆಗಳು ಮತ್ತು ಧಾನ್ಯಗಳು ಚೆನ್ನಾಗಿ ಬೆಳೆಯುತ್ತವೆ.'
+  },
+
+  q2_pest_control: {
+    en: 'How to control pests naturally?',
+    hi: 'कीटों को प्राकृतिक रूप से कैसे नियंत्रित करें?',
+    kn: 'ಕೀಟಗಳನ್ನು ನೈಸರ್ಗಿಕವಾಗಿ ಹೇಗೆ ನಿಯಂತ್ರಿಸಬೇಕು?'
+  },
+  a2_pest_control: {
+    en: 'Use neem oil spray, garlic-chili solution, or companion planting. Plant marigold, basil, or mint around crops. Remove infected plants immediately. Use biological controls like ladybugs for aphids.',
+    hi: 'नीम तेल स्प्रे, लहसुन-मिर्च का घोल, या साथी पौधे लगाएं। फसलों के आसपास गेंदा, तुलसी या पुदीना लगाएं। संक्रमित पौधों को तुरंत हटाएं। एफिड्स के लिए लेडीबग जैसे जैविक नियंत्रण का उपयोग करें।',
+    kn: 'ನೀಂ ಎಣ್ಣೆ ಸ್ಪ್ರೇ, ಬೆಳ್ಳುಳ್ಳಿ-ಮೆಣಸಿನಕಾಯಿ ದ್ರಾವಣ, ಅಥವಾ ಸಹವಾಸಿ ಬೆಳೆಗಳನ್ನು ಬಳಸಿ. ಬೆಳೆಗಳ ಸುತ್ತ ಚೆಂಡುಹೂವು, ತುಳಸಿ, ಅಥವಾ ಪುದೀನ ಬೆಳೆಯಿರಿ. ಸೋಂಕಿತ ಸಸ್ಯಗಳನ್ನು ತಕ್ಷಣ ತೆಗೆದುಹಾಕಿ. ಏಫಿಡ್ಗಳಿಗೆ ಲೇಡಿಬಗ್‌ಗಳಂತಹ ಜೈವಿಕ ನಿಯಂತ್ರಣಗಳನ್ನು ಬಳಸಿ.'
+  },
+
+  q3_irrigation_methods: {
+    en: 'What are the best irrigation methods?',
+    hi: 'सबसे अच्छी सिंचाई विधियां कौन सी हैं?',
+    kn: 'ಉತ್ತಮ ನೀರಾವರಿ ವಿಧಾನಗಳು ಯಾವುವು?'
+  },
+  a3_irrigation_methods: {
+    en: 'Drip irrigation saves 30-50% water and is best for vegetables. Sprinkler irrigation is good for cereals. Flood irrigation for rice. Use mulching to retain soil moisture. Water early morning or evening to reduce evaporation.',
+    hi: 'ड्रिप सिंचाई 30-50% पानी बचाती है और सब्जियों के लिए सबसे अच्छी है। अनाज के लिए स्प्रिंकलर सिंचाई अच्छी है। चावल के लिए बाढ़ सिंचाई। मिट्टी की नमी बनाए रखने के लिए मल्चिंग का उपयोग करें। वाष्पीकरण कम करने के लिए सुबह या शाम को पानी दें।',
+    kn: 'ಡ್ರಿಪ್ ನೀರಾವರಿ 30-50% ನೀರನ್ನು ಉಳಿಸುತ್ತದೆ ಮತ್ತು ತರಕಾರಿಗಳಿಗೆ ಉತ್ತಮ. ಧಾನ್ಯಗಳಿಗೆ ಸ್ಪ್ರಿಂಕ್ಲರ್ ನೀರಾವರಿ ಒಳ್ಳೆಯದು. ಅಕ್ಕಿಗೆ ಪ್ರವಾಹ ನೀರಾವರಿ. ಮಣ್ಣಿನ ತೇವಾಂಶವನ್ನು ಉಳಿಸಲು ಮಲ್ಚಿಂಗ್ ಬಳಸಿ. ಆವಿಯಾಗುವಿಕೆಯನ್ನು ಕಡಿಮೆ ಮಾಡಲು ಬೆಳಿಗ್ಗೆ ಅಥವಾ ಸಂಜೆ ನೀರು ಹಾಕಿ.'
+  },
+
+  q4_harvesting_time: {
+    en: 'When is the best time to harvest crops?',
+    hi: 'फसलों की कटाई का सबसे अच्छा समय कब है?',
+    kn: 'ಬೆಳೆಗಳನ್ನು ಕೊಯ್ಯುವ ಉತ್ತಮ ಸಮಯ ಯಾವಾಗ?'
+  },
+  a4_harvesting_time: {
+    en: 'Harvest in the morning when plants are fresh. For grains: when 80% of grains are mature. For vegetables: when they reach optimal size and color. For fruits: when they are firm but yield to gentle pressure.',
+    hi: 'सुबह के समय कटाई करें जब पौधे ताजे हों। अनाज के लिए: जब 80% अनाज पके हों। सब्जियों के लिए: जब वे इष्टतम आकार और रंग तक पहुंच जाएं। फलों के लिए: जब वे दृढ़ हों लेकिन हल्के दबाव में नरम हों।',
+    kn: 'ಸಸ್ಯಗಳು ತಾಜಾ ಇರುವಾಗ ಬೆಳಿಗ್ಗೆ ಕೊಯ್ಯಿರಿ. ಧಾನ್ಯಗಳಿಗೆ: 80% ಧಾನ್ಯಗಳು ಪಕ್ವವಾದಾಗ. ತರಕಾರಿಗಳಿಗೆ: ಅವು ಸೂಕ್ತ ಗಾತ್ರ ಮತ್ತು ಬಣ್ಣವನ್ನು ತಲುಪಿದಾಗ. ಹಣ್ಣುಗಳಿಗೆ: ಅವು ಗಟ್ಟಿಯಾಗಿದ್ದರೂ ಸೌಮ್ಯ ಒತ್ತಡಕ್ಕೆ ಬಾಗುವಾಗ.'
+  },
+
+  q5_soil_preparation: {
+    en: 'How to prepare soil for planting?',
+    hi: 'रोपण के लिए मिट्टी कैसे तैयार करें?',
+    kn: 'ನೆಡುವಿಕೆಗೆ ಮಣ್ಣನ್ನು ಹೇಗೆ ಸಿದ್ಧಪಡಿಸಬೇಕು?'
+  },
+  a5_soil_preparation: {
+    en: 'Plow the field 2-3 times, remove weeds and stones. Add organic compost or farmyard manure. Level the field for uniform water distribution. Test soil pH and add lime if acidic, sulfur if alkaline.',
+    hi: 'खेत को 2-3 बार जोतें, खरपतवार और पत्थर हटाएं। जैविक कंपोस्ट या गोबर की खाद डालें। समान पानी वितरण के लिए खेत को समतल करें। मिट्टी का pH परीक्षण करें और अम्लीय हो तो चूना, क्षारीय हो तो सल्फर मिलाएं।',
+    kn: 'ನೆಲವನ್ನು 2-3 ಬಾರಿ ಉಳುಮೆ ಮಾಡಿ, ಕಳೆ ಮತ್ತು ಕಲ್ಲುಗಳನ್ನು ತೆಗೆದುಹಾಕಿ. ಜೈವಿಕ ಕಂಪೋಸ್ಟ್ ಅಥವಾ ಗೊಬ್ಬರದ ಗೊಬ್ಬರ ಸೇರಿಸಿ. ಏಕರೂಪದ ನೀರು ವಿತರಣೆಗೆ ನೆಲವನ್ನು ಸಮತಟ್ಟು ಮಾಡಿ. ಮಣ್ಣಿನ pH ಪರೀಕ್ಷಿಸಿ ಮತ್ತು ಆಮ್ಲೀಯವಾಗಿದ್ದರೆ ಚುನ್ನ, ಕ್ಷಾರೀಯವಾಗಿದ್ದರೆ ಗಂಧಕ ಸೇರಿಸಿ.'
+  },
+
+  q6_fertilizer_usage: {
+    en: 'How much fertilizer should I use?',
+    hi: 'मुझे कितनी खाद का उपयोग करना चाहिए?',
+    kn: 'ನಾನು ಎಷ್ಟು ಗೊಬ್ಬರ ಬಳಸಬೇಕು?'
+  },
+  a6_fertilizer_usage: {
+    en: 'Conduct a soil test first. Generally: 80-120 kg N, 40-60 kg P2O5, 40-60 kg K2O per hectare for cereals. For vegetables: 100-150 kg N, 50-80 kg P2O5, 80-120 kg K2O. Split application is better than single dose.',
+    hi: 'पहले मिट्टी का परीक्षण करें। सामान्यतः: अनाज के लिए प्रति हेक्टेयर 80-120 किग्रा N, 40-60 किग्रा P2O5, 40-60 किग್ರा K2O। सब्जियों के लिए: 100-150 किग्रा N, 50-80 किग्रा P2O5, 80-120 किग्रा K2O। एक बार में देने से बेहतर है विभाजित अनुप्रयोग।',
+    kn: 'ಮೊದಲು ಮಣ್ಣಿನ ಪರೀಕ್ಷೆ ಮಾಡಿ. ಸಾಮಾನ್ಯವಾಗಿ: ಧಾನ್ಯಗಳಿಗೆ ಹೆಕ್ಟೇರಿಗೆ 80-120 ಕೆಜಿ N, 40-60 ಕೆಜಿ P2O5, 40-60 ಕೆಜಿ K2O. ತರಕಾರಿಗಳಿಗೆ: 100-150 ಕೆಜಿ N, 50-80 ಕೆಜಿ P2O5, 80-120 ಕೆಜಿ K2O. ಏಕೈಕ ಡೋಸ್‌ಗಿಂತ ವಿಭಜಿತ ಅನ್ವಯ ಉತ್ತಮ.'
+  },
+
+  q7_crop_rotation: {
+    en: 'What is crop rotation and why is it important?',
+    hi: 'फसल चक्र क्या है और यह क्यों महत्वपूर्ण है?',
+    kn: 'ಬೆಳೆ ಪರಿವರ್ತನೆ ಎಂದರೇನು ಮತ್ತು ಅದು ಏಕೆ ಮುಖ್ಯ?'
+  },
+  a7_crop_rotation: {
+    en: 'Crop rotation means growing different crops in sequence on the same land. It prevents soil depletion, reduces pests and diseases, improves soil structure, and maintains fertility. Example: Rice-Wheat-Pulses or Maize-Soybean-Wheat.',
+    hi: 'फसल चक्र का मतलब है एक ही जमीन पर अलग-अलग फसलें क्रम से उगाना। यह मिट्टी की कमी को रोकता है, कीटों और बीमारियों को कम करता है, मिट्टी की संरचना में सुधार करता है और उर्वरता बनाए रखता है। उदाहरण: चावल-गेहूं-दालें या मक्का-सोयाबीन-गेहूं।',
+    kn: 'ಬೆಳೆ ಪರಿವರ್ತನೆ ಎಂದರೆ ಅದೇ ಭೂಮಿಯಲ್ಲಿ ವಿಭಿನ್ನ ಬೆಳೆಗಳನ್ನು ಅನುಕ್ರಮವಾಗಿ ಬೆಳೆಯುವುದು. ಇದು ಮಣ್ಣಿನ ಕೊರತೆಯನ್ನು ತಡೆಯುತ್ತದೆ, ಕೀಟಗಳು ಮತ್ತು ರೋಗಗಳನ್ನು ಕಡಿಮೆ ಮಾಡುತ್ತದೆ, ಮಣ್ಣಿನ ರಚನೆಯನ್ನು ಸುಧಾರಿಸುತ್ತದೆ ಮತ್ತು ಫಲವತ್ತತೆಯನ್ನು ನಿರ್ವಹಿಸುತ್ತದೆ. ಉದಾಹರಣೆ: ಅಕ್ಕಿ-ಗೋಧಿ-ಪಲ್ಸೆಗಳು ಅಥವಾ ಜೋಳ-ಸೋಯಾಬೀನ್-ಗೋಧಿ.'
+  },
+
+  q8_weed_control: {
+    en: 'How to control weeds effectively?',
+    hi: 'खरपतवार को प्रभावी ढंग से कैसे नियंत्रित करें?',
+    kn: 'ಕಳೆಗಳನ್ನು ಪರಿಣಾಮಕಾರಿಯಾಗಿ ಹೇಗೆ ನಿಯಂತ್ರಿಸಬೇಕು?'
+  },
+  a8_weed_control: {
+    en: 'Use pre-emergence herbicides before weeds appear. Hand weeding is most effective but labor-intensive. Mulching prevents weed growth. Use stale seedbed technique: prepare soil, let weeds grow, then kill them before planting.',
+    hi: 'खरपतवार दिखने से पहले प्री-इमर्जेंस हर्बिसाइड्स का उपयोग करें। हाथ से निराई सबसे प्रभावी है लेकिन श्रम-गहन है। मल्चिंग खरपतवार के विकास को रोकती है। स्टेल सीडबेड तकनीक का उपयोग करें: मिट्टी तैयार करें, खरपतवार उगने दें, फिर रोपण से पहले उन्हें मारें।',
+    kn: 'ಕಳೆಗಳು ಕಾಣಿಸಿಕೊಳ್ಳುವ ಮೊದಲು ಪ್ರೀ-ಎಮರ್ಜೆನ್ಸ್ ಕಳೆನಾಶಕಗಳನ್ನು ಬಳಸಿ. ಕೈಯಿಂದ ಕಳೆ ತೆಗೆಯುವುದು ಅತ್ಯಂತ ಪರಿಣಾಮಕಾರಿ ಆದರೆ ಕಾರ್ಮಿಕ-ತೀವ್ರ. ಮಲ್ಚಿಂಗ್ ಕಳೆ ಬೆಳವಣಿಗೆಯನ್ನು ತಡೆಯುತ್ತದೆ. ಸ್ಟೇಲ್ ಸೀಡ್‌ಬೆಡ್ ತಂತ್ರವನ್ನು ಬಳಸಿ: ಮಣ್ಣನ್ನು ಸಿದ್ಧಪಡಿಸಿ, ಕಳೆಗಳು ಬೆಳೆಯಲು ಬಿಡಿ, ನಂತರ ನೆಡುವಿಕೆಗೆ ಮೊದಲು ಅವುಗಳನ್ನು ಕೊಲ್ಲಿ.'
+  },
+
+  q9_water_management: {
+    en: 'How to manage water efficiently in farming?',
+    hi: 'खेती में पानी का कुशल प्रबंधन कैसे करें?',
+    kn: 'ಕೃಷಿಯಲ್ಲಿ ನೀರನ್ನು ಪರಿಣಾಮಕಾರಿಯಾಗಿ ಹೇಗೆ ನಿರ್ವಹಿಸಬೇಕು?'
+  },
+  a9_water_management: {
+    en: 'Use drip or sprinkler irrigation. Collect rainwater in ponds or tanks. Practice mulching to reduce evaporation. Choose drought-resistant crop varieties. Schedule irrigation based on crop needs, not fixed timings.',
+    hi: 'ड्रिप या स्प्रिंकलर सिंचाई का उपयोग करें। तालाबों या टैंकों में वर्षा जल एकत्र करें। वाष्पीकरण कम करने के लिए मल्चिंग का अभ्यास करें। सूखा-प्रतिरोधी फसल किस्में चुनें। निश्चित समय के बजाय फसल की जरूरतों के आधार पर सिंचाई का समय निर्धारित करें।',
+    kn: 'ಡ್ರಿಪ್ ಅಥವಾ ಸ್ಪ್ರಿಂಕ್ಲರ್ ನೀರಾವರಿ ಬಳಸಿ. ಕೊಳಗಳು ಅಥವಾ ಟ್ಯಾಂಕ್‌ಗಳಲ್ಲಿ ಮಳೆನೀರು ಸಂಗ್ರಹಿಸಿ. ಆವಿಯಾಗುವಿಕೆಯನ್ನು ಕಡಿಮೆ ಮಾಡಲು ಮಲ್ಚಿಂಗ್ ಅಭ್ಯಾಸ ಮಾಡಿ. ಬರ-ನಿರೋಧಕ ಬೆಳೆ ವಿಧಗಳನ್ನು ಆಯ್ಕೆ ಮಾಡಿ. ನಿಗದಿತ ಸಮಯಕ್ಕೆ ಬದಲಾಗಿ ಬೆಳೆಯ ಅಗತ್ಯಗಳ ಆಧಾರದ ಮೇಲೆ ನೀರಾವರಿ ವೇಳಾಪಟ್ಟಿ ಮಾಡಿ.'
+  },
+
+  q10_seed_selection: {
+    en: 'How to choose the right seeds?',
+    hi: 'सही बीज कैसे चुनें?',
+    kn: 'ಸರಿಯಾದ ಬೀಜಗಳನ್ನು ಹೇಗೆ ಆಯ್ಕೆ ಮಾಡಬೇಕು?'
+  },
+  a10_seed_selection: {
+    en: 'Choose certified seeds from reliable sources. Select varieties suitable for your climate and soil. Check seed purity, germination rate, and disease resistance. Buy from government agencies or reputed private companies.',
+    hi: 'विश्वसनीय स्रोतों से प्रमाणित बीज चुनें। अपनी जलवायु और मिट्टी के लिए उपयुक्त किस्में चुनें। बीज की शुद्धता, अंकुरण दर और रोग प्रतिरोधक क्षमता की जांच करें। सरकारी एजेंसियों या प्रतिष्ठित निजी कंपनियों से खरीदें।',
+    kn: 'ವಿಶ್ವಾಸಾರ್ಹ ಮೂಲಗಳಿಂದ ಪ್ರಮಾಣೀಕೃತ ಬೀಜಗಳನ್ನು ಆಯ್ಕೆ ಮಾಡಿ. ನಿಮ್ಮ ಹವಾಮಾನ ಮತ್ತು ಮಣ್ಣಿಗೆ ಸೂಕ್ತವಾದ ವಿಧಗಳನ್ನು ಆಯ್ಕೆ ಮಾಡಿ. ಬೀಜದ ಶುದ್ಧತೆ, ಮೊಳಕೆಯ ದರ ಮತ್ತು ರೋಗ ನಿರೋಧಕತೆಯನ್ನು ಪರಿಶೀಲಿಸಿ. ಸರ್ಕಾರಿ ಸಂಸ್ಥೆಗಳು ಅಥವಾ ಪ್ರತಿಷ್ಠಿತ ಖಾಸಗಿ ಕಂಪನಿಗಳಿಂದ ಖರೀದಿಸಿ.'
+  },
+
+  q11_organic_farming: {
+    en: 'How to start organic farming?',
+    hi: 'जैविक खेती कैसे शुरू करें?',
+    kn: 'ಜೈವಿಕ ಕೃಷಿಯನ್ನು ಹೇಗೆ ಪ್ರಾರಂಭಿಸಬೇಕು?'
+  },
+  a11_organic_farming: {
+    en: 'Start with soil health: add compost, green manure, and organic matter. Use organic pesticides like neem oil. Practice crop rotation and intercropping. Avoid synthetic fertilizers and pesticides. Get organic certification for better market prices.',
+    hi: 'मिट्टी के स्वास्थ्य से शुरुआत करें: कंपोस्ट, हरी खाद और जैविक पदार्थ डालें। नीम तेल जैसे जैविक कीटनाशकों का उपयोग करें। फसल चक्र और अंतर-फसल का अभ्यास करें। सिंथेटिक उर्वरकों और कीटनाशकों से बचें। बेहतर बाजार मूल्य के लिए जैविक प्रमाणन प्राप्त करें।',
+    kn: 'ಮಣ್ಣಿನ ಆರೋಗ್ಯದಿಂದ ಪ್ರಾರಂಭಿಸಿ: ಕಂಪೋಸ್ಟ್, ಹಸಿರು ಗೊಬ್ಬರ ಮತ್ತು ಜೈವಿಕ ವಸ್ತುಗಳನ್ನು ಸೇರಿಸಿ. ನೀಂ ಎಣ್ಣೆಯಂತಹ ಜೈವಿಕ ಕೀಟನಾಶಕಗಳನ್ನು ಬಳಸಿ. ಬೆಳೆ ಪರಿವರ್ತನೆ ಮತ್ತು ಅಂತರ-ಬೆಳೆ ಅಭ್ಯಾಸ ಮಾಡಿ. ಸಂಶ್ಲೇಷಿತ ಗೊಬ್ಬರಗಳು ಮತ್ತು ಕೀಟನಾಶಕಗಳನ್ನು ತಪ್ಪಿಸಿ. ಉತ್ತಮ ಮಾರುಕಟ್ಟೆ ಬೆಲೆಗಳಿಗೆ ಜೈವಿಕ ಪ್ರಮಾಣೀಕರಣ ಪಡೆಯಿರಿ.'
+  },
+
+  q12_storage_methods: {
+    en: 'How to store harvested crops properly?',
+    hi: 'कटी हुई फसलों को ठीक से कैसे स्टोर करें?',
+    kn: 'ಕೊಯ್ದ ಬೆಳೆಗಳನ್ನು ಸರಿಯಾಗಿ ಹೇಗೆ ಸಂಗ್ರಹಿಸಬೇಕು?'
+  },
+  a12_storage_methods: {
+    en: 'Clean and dry crops before storage. Use airtight containers or bags. Store in cool, dry, and well-ventilated areas. Check regularly for pests and moisture. Use natural preservatives like neem leaves for grains.',
+    hi: 'भंडारण से पहले फसलों को साफ और सुखाएं। हवा-रोधी कंटेनर या बैग का उपयोग करें। ठंडी, सूखी और अच्छी तरह हवादार जगहों में स्टोर करें। कीटों और नमी के लिए नियमित रूप से जांच करें। अनाज के लिए नीम के पत्ते जैसे प्राकृतिक परिरक्षकों का उपयोग करें।',
+    kn: 'ಸಂಗ್ರಹಣೆಗೆ ಮೊದಲು ಬೆಳೆಗಳನ್ನು ಸ್ವಚ್ಛಗೊಳಿಸಿ ಮತ್ತು ಒಣಗಿಸಿ. ಗಾಳಿ-ನಿರೋಧಕ ಕಂಟೇನರ್‌ಗಳು ಅಥವಾ ಚೀಲಗಳನ್ನು ಬಳಸಿ. ತಂಪಾದ, ಒಣ ಮತ್ತು ಚೆನ್ನಾಗಿ ಗಾಳಿ ಬೀಸುವ ಪ್ರದೇಶಗಳಲ್ಲಿ ಸಂಗ್ರಹಿಸಿ. ಕೀಟಗಳು ಮತ್ತು ತೇವಾಂಶಕ್ಕಾಗಿ ನಿಯಮಿತವಾಗಿ ಪರಿಶೀಲಿಸಿ. ಧಾನ್ಯಗಳಿಗೆ ನೀಂ ಎಲೆಗಳಂತಹ ನೈಸರ್ಗಿಕ ಸಂರಕ್ಷಕಗಳನ್ನು ಬಳಸಿ.'
+  },
+
+  q13_market_timing: {
+    en: 'When is the best time to sell crops?',
+    hi: 'फसलें बेचने का सबसे अच्छा समय कब है?',
+    kn: 'ಬೆಳೆಗಳನ್ನು ಮಾರಾಟ ಮಾಡುವ ಉತ್ತಮ ಸಮಯ ಯಾವಾಗ?'
+  },
+  a13_market_timing: {
+    en: 'Sell when prices are high, usually during off-season or when supply is low. Monitor market prices regularly. Store crops if prices are low and sell when they rise. Consider government procurement schemes for guaranteed prices.',
+    hi: 'जब कीमतें अधिक हों तब बेचें, आमतौर पर ऑफ-सीजन के दौरान या जब आपूर्ति कम हो। बाजार की कीमतों की नियमित रूप से निगरानी करें। कीमतें कम हों तो फसलें स्टोर करें और बढ़ने पर बेचें। गारंटीकृत कीमतों के लिए सरकारी खरीद योजनाओं पर विचार करें।',
+    kn: 'ಬೆಲೆಗಳು ಹೆಚ್ಚಾಗಿರುವಾಗ ಮಾರಾಟ ಮಾಡಿ, ಸಾಮಾನ್ಯವಾಗಿ ಆಫ್-ಸೀಸನ್ ಸಮಯದಲ್ಲಿ ಅಥವಾ ಪೂರೈಕೆ ಕಡಿಮೆಯಿರುವಾಗ. ಮಾರುಕಟ್ಟೆ ಬೆಲೆಗಳನ್ನು ನಿಯಮಿತವಾಗಿ ಮೇಲ್ವಿಚಾರಣೆ ಮಾಡಿ. ಬೆಲೆಗಳು ಕಡಿಮೆಯಾಗಿದ್ದರೆ ಬೆಳೆಗಳನ್ನು ಸಂಗ್ರಹಿಸಿ ಮತ್ತು ಅವು ಏರಿದಾಗ ಮಾರಾಟ ಮಾಡಿ. ಖಾತರಿ ಬೆಲೆಗಳಿಗೆ ಸರ್ಕಾರಿ ಖರೀದಿ ಯೋಜನೆಗಳನ್ನು ಪರಿಗಣಿಸಿ.'
+  },
+
+  q14_disease_prevention: {
+    en: 'How to prevent crop diseases?',
+    hi: 'फसल की बीमारियों को कैसे रोकें?',
+    kn: 'ಬೆಳೆ ರೋಗಗಳನ್ನು ಹೇಗೆ ತಡೆಯಬೇಕು?'
+  },
+  a14_disease_prevention: {
+    en: 'Use disease-resistant varieties. Practice crop rotation. Maintain proper spacing between plants. Remove infected plants immediately. Use clean seeds and tools. Avoid overhead watering to prevent fungal diseases.',
+    hi: 'रोग-प्रतिरोधी किस्मों का उपयोग करें। फसल चक्र का अभ्यास करें। पौधों के बीच उचित दूरी बनाए रखें। संक्रमित पौधों को तुरंत हटाएं। साफ बीज और उपकरणों का उपयोग करें। फंगल रोगों को रोकने के लिए ओवरहेड वाटरिंग से बचें।',
+    kn: 'ರೋಗ-ನಿರೋಧಕ ವಿಧಗಳನ್ನು ಬಳಸಿ. ಬೆಳೆ ಪರಿವರ್ತನೆ ಅಭ್ಯಾಸ ಮಾಡಿ. ಸಸ್ಯಗಳ ನಡುವೆ ಸರಿಯಾದ ಅಂತರವನ್ನು ನಿರ್ವಹಿಸಿ. ಸೋಂಕಿತ ಸಸ್ಯಗಳನ್ನು ತಕ್ಷಣ ತೆಗೆದುಹಾಕಿ. ಸ್ವಚ್ಛ ಬೀಜಗಳು ಮತ್ತು ಉಪಕರಣಗಳನ್ನು ಬಳಸಿ. ಫಂಗಲ್ ರೋಗಗಳನ್ನು ತಡೆಯಲು ಓವರ್‌ಹೆಡ್ ನೀರುಹಾಕುವಿಕೆಯನ್ನು ತಪ್ಪಿಸಿ.'
+  },
+
+  q15_profit_maximization: {
+    en: 'How to maximize farming profits?',
+    hi: 'खेती के मुनाफे को कैसे बढ़ाएं?',
+    kn: 'ಕೃಷಿ ಲಾಭವನ್ನು ಹೇಗೆ ಗರಿಷ್ಠಗೊಳಿಸಬೇಕು?'
+  },
+  a15_profit_maximization: {
+    en: 'Choose high-value crops with good market demand. Reduce input costs through efficient resource use. Practice mixed farming (crops + livestock). Use modern technology and techniques. Build direct market connections to avoid middlemen.',
+    hi: 'अच्छी बाजार मांग वाली उच्च-मूल्य वाली फसलें चुनें। कुशल संसाधन उपयोग के माध्यम से इनपुट लागत कम करें। मिश्रित खेती (फसलें + पशुपालन) का अभ्यास करें। आधुनिक तकनीक और तरीकों का उपयोग करें। बिचौलियों से बचने के लिए सीधे बाजार कनेक्शन बनाएं।',
+    kn: 'ಉತ್ತಮ ಮಾರುಕಟ್ಟೆ ಬೇಡಿಕೆಯಿರುವ ಹೆಚ್ಚಿನ-ಮೌಲ್ಯದ ಬೆಳೆಗಳನ್ನು ಆಯ್ಕೆ ಮಾಡಿ. ಪರಿಣಾಮಕಾರಿ ಸಂಪನ್ಮೂಲ ಬಳಕೆಯ ಮೂಲಕ ಇನ್ಪುಟ್ ವೆಚ್ಚಗಳನ್ನು ಕಡಿಮೆ ಮಾಡಿ. ಮಿಶ್ರ ಕೃಷಿ (ಬೆಳೆಗಳು + ಪಶುಪಾಲನೆ) ಅಭ್ಯಾಸ ಮಾಡಿ. ಆಧುನಿಕ ತಂತ್ರಜ್ಞಾನ ಮತ್ತು ತಂತ್ರಗಳನ್ನು ಬಳಸಿ. ಮಧ್ಯಸ್ಥರನ್ನು ತಪ್ಪಿಸಲು ನೇರ ಮಾರುಕಟ್ಟೆ ಸಂಪರ್ಕಗಳನ್ನು ನಿರ್ಮಿಸಿ.'
   }
 };

@@ -7,6 +7,7 @@ import { ArrowLeft, Calendar, MapPin, Trash2, Eye, BarChart3 } from 'lucide-reac
 import { Link } from 'react-router-dom';
 import { toast } from 'sonner';
 import { LanguageSelector } from '@/components/LanguageSelector';
+import { WeatherAnalysisButton } from '@/components/WeatherAnalysisButton';
 import { useLanguage } from '@/hooks/useLanguage';
 
 interface SavedAnalysis {
@@ -41,7 +42,8 @@ const Dashboard = () => {
     return (
       <div className="min-h-screen bg-gradient-to-br from-background via-accent/10 to-primary/5 py-8 px-4">
         <div className="max-w-6xl mx-auto">
-          <div className="absolute top-4 right-4">
+          <div className="absolute top-4 right-4 flex items-center gap-2">
+            <WeatherAnalysisButton />
             <LanguageSelector />
           </div>
           <div className="flex items-center gap-4 mb-8">
@@ -131,11 +133,12 @@ const Dashboard = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-accent/10 to-primary/5 py-8 px-4">
-      <div className="max-w-6xl mx-auto">
-        <div className="absolute top-4 right-4">
-          <LanguageSelector />
-        </div>
+      <div className="min-h-screen bg-gradient-to-br from-background via-accent/10 to-primary/5 py-8 px-4">
+        <div className="max-w-6xl mx-auto">
+          <div className="absolute top-4 right-4 flex items-center gap-2">
+            <WeatherAnalysisButton />
+            <LanguageSelector />
+          </div>
         <div className="flex items-center gap-4 mb-8">
           <Link to="/">
             <Button 
